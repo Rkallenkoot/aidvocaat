@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row_wrapper">
+		<div class="link_1"></div>
+		<div class="link_2"></div>
+		<div class="link_3"></div>
+	</div>
+	<div class="row_wrapper">
+
+		<div id="chat_view">
+			<div id="entries">
+				<div id="full_height"></div>
+				{% for entry in chats %}
+					{% if entry.agent == 0 %}
+					<div class="chat_user">					
+						{{ entry.content }}
+					</div>
+					{% else %}
+					<div class="chat_ai">
+						{{ entry.content }}
+					</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+
+		</div>
+		<div id="pdf_view">
+			here will be a pdf/highlights
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	{% if form %}
+	<form class="search_form" action="{{url_for('chat', id=case_id) }}" method="POST">
+		{{ form.content() }}
+		{{ form.csrf_token }}
+	</form>
+	{% else%}
+		<h4>Oops... something went wrong</h4>
+	{% endif %}
+
+{% endblock %}

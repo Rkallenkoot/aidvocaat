@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+	<title>Advocaid</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+	<!-- <link rel="shortcut icon" href="{{ url_for('static', filename='caretracker_logo.png') }}"/> -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+	<div id="total_wrapper">
+		<div id="content_wrapper">
+			<div id="navigation">
+				<a class="menu_item" href="{{url_for('docs')}}">Docs</a>
+				<a class="menu_item" href="{{url_for('chat', id = 1)}}">Chat</a>
+				<a class="menu_item" href="{{url_for('notes')}}">Notes</a>
+			</div>
+
+			<div id="content">
+				{% block content %} {% endblock %}
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		{% block footer %} {% endblock %}
+	</div>
+</body>
